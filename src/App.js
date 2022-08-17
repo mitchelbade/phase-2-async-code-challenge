@@ -2,23 +2,31 @@ import MovieContainer from "./Components/MovieContainer";
 import MovieForm from "./Components/MovieForm";
 import Home from "./Components/Home";
 import './App.css';
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 
 function App() {
+  const [movies, setMovies] =useState([])
 
+  useEffect(() => {
+    fetch("http://localhost:3001/movies")
+    .then(r => r.json())
+    .then(data => setMovies(data))
+  }, [])
+
+  function addMovie(newMovie) {
+    const updatesMovies = [...movies, newMovie]
+    setMovies(updatesMovies);
+  }
 
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        {/* Add route "/movies", which renders <MovieContainer/>
-        Add route "/movies/new", which renders <MovieForm/> */}
+        <Route path="/" element={<Home />}/>
+        <Route path="/movies" element={<MovieContainer movies={movies}/>}/>
+        <Route path="/movies/new" element={<MovieForm movies={movies} onAddMovie={addMovie}/>}/>
       </Routes>
-      
     </div>
   );
 }

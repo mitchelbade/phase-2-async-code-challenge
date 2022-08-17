@@ -1,9 +1,11 @@
 import React from 'react'
 
 function Comments({comments, setComments}) {
+
   const createdComments = comments.map(c => c.content)
+
   return (
-    <div>Comments<br/>
+    <div>Comments: <br/>
         {createdComments}
     </div>
   )
