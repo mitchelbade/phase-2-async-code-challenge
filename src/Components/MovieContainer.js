@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MovieCard from "./MovieCard";
 import Filter from "./Filter";
 import Search from "./Search";
@@ -17,6 +17,9 @@ function MovieContainer({ movies }) {
 
   const movieFilter = movies.filter((movie) => {
       if (selectedGenre === "" && searchTitle === "") {
+        return movie;
+      }
+      else if (selectedGenre === "" && movie.title.toLowerCase().includes(searchTitle.toLowerCase())) {
         return movie;
       }
       else if (movie.genre === selectedGenre && movie.title.toLowerCase().includes(searchTitle.toLowerCase())) {

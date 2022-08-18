@@ -5,7 +5,7 @@ import '../App.css';
 
 function MovieCard({ movie }) {
   const [comments, setComments] = useState([])
-  const { title, description, genre, watched, image } = movie
+  const { title, description, genre, image } = movie
 
   return (
     <div>
