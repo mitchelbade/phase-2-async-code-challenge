@@ -31,6 +31,22 @@
       "genre": "Comedy",
       "watched": false,
       "image": "https://i.guim.co.uk/img/media/7a1f6954c6d25f343fd20c7e53ccd772a5aadef3/0_335_3234_1940/master/3234.jpg?width=620&quality=85&fit=max&s=24a4b574355211917ac0d77c19e0793b"
+    },
+    {
+      "title": "Predator",
+      "description": "Alien esq movie",
+      "genre": "Action",
+      "watched": false,
+      "image": "Random Image",
+      "id": 5
+    },
+    {
+      "title": "predator",
+      "description": "scary alien movie",
+      "genre": "Action",
+      "watched": false,
+      "image": "a;lkjasdf",
+      "id": 6
     }
   ]
 }
