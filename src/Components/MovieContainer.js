@@ -16,8 +16,12 @@ function MovieContainer({ movies }) {
   }
 
   const movieFilter = movies.filter((movie) => {
-    if (selectedGenre === "") return true;
-      return movie.genre === selectedGenre;
+      if (selectedGenre === "" && searchTitle === "") {
+        return movie;
+      }
+      else if (movie.genre === selectedGenre && movie.title.toLowerCase().includes(searchTitle.toLowerCase())) {
+        return movie;
+      }
   })
 
   return (
@@ -29,7 +33,7 @@ function MovieContainer({ movies }) {
       <br/>
       <ul>
         {movieFilter.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} movie={movie}/>
         ))}  
       </ul>
     </div>
