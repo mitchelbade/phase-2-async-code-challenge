@@ -3,17 +3,32 @@ import MovieCard from "./MovieCard";
 import Filter from "./Filter";
 import Search from "./Search";
 
-function MovieContainer({movies}) {
+function MovieContainer({ movies }) {
+  const [selectedGenre, setSelectedGenre] = useState("")
+  const [searchTitle, setSearchTitle] = useState("")
+
+  function handleGenreChange(genre) {
+    setSelectedGenre(genre)
+  }
+
+  function handleSearch(search) {
+    setSearchTitle(search)
+  }
+
+  const movieFilter = movies.filter((movie) => {
+    if (selectedGenre === "") return true;
+      return movie.genre === selectedGenre;
+  })
 
   return (
     <div>
       <h1>Watchlist</h1>
-      <Search />
+      <Search search={searchTitle} onSearch={handleSearch}/>
       <br/>
-      <Filter />
+      <Filter genre={selectedGenre} onGenreChange={handleGenreChange}/>
       <br/>
       <ul>
-        {movies.map((movie) => (
+        {movieFilter.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}  
       </ul>

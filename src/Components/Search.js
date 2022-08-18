@@ -1,10 +1,17 @@
 import React from 'react'
 
-function Search() {
+function Search({ search, onSearch }) {
+
+
 
   return (
     <div>
-        <input type="text" placeholder="Search for movie by title" style={{width: '250px'}}/>
+        <input 
+        value={search}
+        onChange={(e) => onSearch(e.target.value)}
+        type="text" 
+        placeholder="Search for movie by title" 
+        style={{width: '250px'}}/>
     </div>
   )
 }

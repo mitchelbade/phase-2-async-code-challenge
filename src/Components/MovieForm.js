@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function MovieForm({ movies, onAddMovie }) {
+function MovieForm() {
   const [ newMovie, setNewMovie ] = useState({
     title: "",
     description: "",
@@ -18,6 +18,8 @@ function MovieForm({ movies, onAddMovie }) {
           },
           body: JSON.stringify(newMovie)
       })
+      .then(r => r.json())
+      .then(d => console.log(d))
   }
 
   function handleChange(e) {

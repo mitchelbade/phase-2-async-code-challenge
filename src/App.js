@@ -15,17 +15,12 @@ function App() {
     .then(data => setMovies(data))
   }, [])
 
-  function addMovie(newMovie) {
-    const updatesMovies = [...movies, newMovie]
-    setMovies(updatesMovies);
-  }
-
   return (
     <div className="app">
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/movies" element={<MovieContainer movies={movies}/>}/>
-        <Route path="/movies/new" element={<MovieForm movies={movies} onAddMovie={addMovie}/>}/>
+        <Route path="/movies/new" element={<MovieForm movies={movies}/>}/>
       </Routes>
     </div>
   );
